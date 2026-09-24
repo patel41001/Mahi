@@ -57,8 +57,11 @@ export class AudioRecorder {
 
       this.sourceNode.connect(this.analyser);
       this.analyser.connect(this.processorNode);
-      // ScriptProcessor needs to connect to destination to trigger events
-      this.processorNode.connect(this.audioCtx.destination);
+      // Route through a zero-gain node to audioCtx.destination to trigger ScriptProcessor without mic speaker feedback
+      const muteGain = this.audioCtx.createGain();
+      muteGain.gain.value = 0;
+      this.processorNode.connect(muteGain);
+      muteGain.connect(this.audioCtx.destination);
 
       this.isRecording = true;
     } catch (err: any) {

@@ -15,8 +15,8 @@ interface SettingsModalProps {
 }
 
 const VOICES: { id: VoiceName; name: string; desc: string; persona: string }[] = [
-  { id: 'Aoede', name: 'Aoede', desc: 'Vibrant, sassy, and bold', persona: 'Recommended for Mahi' },
-  { id: 'Kore', name: 'Kore', desc: 'Warm, sweet, and playful', persona: 'Close friend energy' },
+  { id: 'Kore', name: 'Kore', desc: 'Youthful, warm, and playful', persona: 'Recommended for Mahi (Natural)' },
+  { id: 'Aoede', name: 'Aoede', desc: 'Deep, bold, and confident', persona: 'Sassy & dramatic' },
   { id: 'Puck', name: 'Puck', desc: 'Energetic and cheeky', persona: 'Playful banter' },
   { id: 'Zephyr', name: 'Zephyr', desc: 'Smooth, calm, and suave', persona: 'Relaxed charm' },
 ];

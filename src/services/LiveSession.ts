@@ -1,5 +1,5 @@
 import { AudioRecorder } from './AudioRecorder';
-import { AudioStreamer } from './AudioStreamer';
+import { AudioStreamer, SpeechVisemeMetrics } from './AudioStreamer';
 import type { AssistantState, VoiceName } from '../types/assistant';
 
 export interface LiveSessionConfig {
@@ -11,7 +11,7 @@ export class LiveSession {
   private recorder: AudioRecorder;
   private streamer: AudioStreamer;
   private state: AssistantState = 'disconnected';
-  private voice: VoiceName = 'Aoede';
+  private voice: VoiceName = 'Kore';
   private errorMessage = '';
 
   public onStateChange?: (state: AssistantState) => void;
@@ -214,6 +214,13 @@ export class LiveSession {
       volume: 0,
       activeSource: 'none'
     };
+  }
+
+  /**
+   * Returns real-time speech viseme metrics for character lip-syncing.
+   */
+  public getSpeechVisemeMetrics(): SpeechVisemeMetrics {
+    return this.streamer.getSpeechVisemeMetrics();
   }
 
   public cleanup(): void {
